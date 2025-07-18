@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsAuthenticated(true);
         localStorage.setItem('user', JSON.stringify(defaultUser));
         toast.success('Login realizado com sucesso');
-        navigate('/dashboard');
+        navigate('/d');
       } else {
         toast.error('Credenciais inválidas');
         throw new Error('Credenciais inválidas');

@@ -10,10 +10,8 @@ import {
   MessageCircle,
   MonitorSmartphone,
 } from "lucide-react";
-import { useAuth } from "@/context/AuthContext";
 
 export function Dashboard() {
-  const { user } = useAuth();
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -38,11 +36,10 @@ export function Dashboard() {
   return (
     <div
       ref={ref}
-      className={`relative py-20 md:py-32 overflow-hidden transition-opacity duration-1000 ${
-        visible
-          ? "animate-fade-in opacity-100 pointer-events-auto"
-          : "animate-fade-out opacity-0 pointer-events-none"
-      }`}
+      className={`relative py-20 md:py-32 overflow-hidden transition-opacity duration-1000 ${visible
+        ? "animate-fade-in opacity-100 pointer-events-auto"
+        : "animate-fade-out opacity-0 pointer-events-none"
+        }`}
     >
       {/* Fundo decorativo */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
@@ -65,26 +62,60 @@ export function Dashboard() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+
           {/* Card de download */}
           <Card className="glass-card border-primary/20 flex flex-col justify-between">
             <CardHeader>
               <CardTitle className="text-2xl">Aplicativo Piolho Optimize</CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col items-center justify-center flex-grow space-y-6">
-              <a href="/downloads/PainelAppInstaller.exe" download>
+
+            <CardContent className="flex flex-col items-center justify-center flex-grow space-y-4">
+              {/* Container dos botões lado a lado */}
+              <div className="flex gap-4">
+                {/* Botão de download */}
+                <a
+                  href="https://www.mediafire.com/file/gp9921tm2bcsp3r/Piolho_OptimizeX.rar/file"
+                  download
+                  className="no-underline"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button
+                    size="lg"
+                    className="flex items-center gap-2 rounded-full px-8 hover:scale-105 transition-transform"
+                  >
+                    <Download className="w-5 h-5" />
+                    Baixar Agora
+                  </Button>
+                </a>
+
+
+                {/* Botão ver tutorial */}
                 <Button
                   size="lg"
-                  className="flex items-center gap-2 rounded-full px-8 hover:scale-105 transition-transform"
+                  variant="outline"
+                  className="flex items-center gap-2 rounded-full px-8 hover:scale-105 hover:text-white hover:bg-primary transition-colors"
+                  onClick={() => {
+                    window.open("https://youtu.be/qaw7xONn4Vc", "_blank");
+                  }}
                 >
-                  <Download className="w-5 h-5" />
-                  Baixar Agora
+                  Ver Tutorial
                 </Button>
-              </a>
+
+              </div>
+
+              {/* Senha */}
+              <p className="text-sm text-muted-foreground text-center">
+                Senha para abrir o painel: <strong>piolhofree</strong>
+              </p>
             </CardContent>
-            <p className="text-center text-sm text-muted-foreground pb-6">
-              Versão 1.0.0 · 41,44 MB
-            </p>
+            {/* Versão e atualização */}
+            <div className="text-center text-sm text-muted-foreground pb-6 space-y-1">
+              <p>Versão 1.0.0 · 41,44 MB</p>
+              <p>Última atualização: Julho de 2025</p>
+            </div>
           </Card>
+
 
           {/* Card de recursos */}
           <Card className="glass-card border-primary/20">
@@ -134,21 +165,6 @@ export function Dashboard() {
           </Card>
         </div>
 
-        {/* Novidades da Versão */}
-        <Card className="glass-card border-primary/20">
-          <CardHeader>
-            <CardTitle className="text-2xl">Novidades da Versão 1.0.0</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="list-disc pl-5 text-muted-foreground">
-              <li>Sistema de login melhorado</li>
-              <li>Correção de bugs e melhorias de estabilidade</li>
-              <li>Ativação de modo turbo com 1 clique</li>
-              <li>Nova interface responsiva</li>
-            </ul>
-          </CardContent>
-        </Card>
-
         {/* FAQs */}
         <Card className="glass-card border-primary/20">
           <CardHeader>
@@ -185,6 +201,21 @@ export function Dashboard() {
           </CardContent>
         </Card>
 
+        <Card className="glass-card border-primary/20">
+          <CardHeader>
+            <CardTitle className="text-2xl">O que dizem os usuários</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <blockquote className="text-sm text-muted-foreground italic border-l-4 pl-4 border-[#22c55e]">
+              “O Piolho Optimize deixou meu PC muito mais rápido, nem parece o mesmo!”
+              <div className="mt-1 font-bold">– João Silva</div>
+            </blockquote>
+            <blockquote className="text-sm text-muted-foreground italic border-l-4 pl-4 border-[#22c55e]">
+              “Interface fácil e muito eficiente! Recomendo.”
+              <div className="mt-1 font-bold">– Maria Souza</div>
+            </blockquote>
+          </CardContent>
+        </Card>
         {/* Indicadores de Uso */}
         <div className="flex justify-center gap-10 mt-6 text-center text-muted-foreground">
           <div>

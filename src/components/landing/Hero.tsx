@@ -51,10 +51,10 @@ export function Hero() {
             Deixe seu máquina <span className="text-[#22c55e]">mais rápido</span> e eficiente
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Otimize seu computador eliminando arquivos desnecessários, liberando memória e otimizando o uso do disco para garantir um sistema mais rápido, leve, estável e eficiente.
+            Otimize seu computador eliminando arquivos desnecessários, liberando memória e otimizando o uso do disco para garantir um sistema mais rápido e eficiente.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <Link to={isAuthenticated ? "/dashboard" : "/login"}>
+            <Link to="/dashboard">
               <Button size="lg" className="gap-2 rounded-full">
                 iniciar otimização
                 <ArrowRight className="h-4 w-4" />
