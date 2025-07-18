@@ -48,7 +48,7 @@ export function Hero() {
             <span>Otimização de Sistema</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            Deixe sua máquina <span className="text-[#22c55e]">mais rápido</span> e eficiente
+            Deixe seu máquina <span className="text-[#22c55e]">mais rápido</span> e eficiente
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Otimize seu computador eliminando arquivos desnecessários, liberando memória e otimizando o uso do disco para garantir um sistema mais rápido, leve, estável e eficiente.
