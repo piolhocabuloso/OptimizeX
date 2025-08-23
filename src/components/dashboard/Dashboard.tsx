@@ -1,248 +1,132 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Download,
-  ShieldCheck,
-  Zap,
-  CheckCircle,
-  HelpCircle,
-  MessageCircle,
-  MonitorSmartphone,
-} from "lucide-react";
+import { Download, Rocket, ShieldCheck, Zap, CheckCircle, MessageCircle, Cpu } from "lucide-react";
 
 export function Dashboard() {
-  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(entry.isIntersecting);
-      },
+      ([entry]) => setVisible(entry.isIntersecting),
       { threshold: 0.1 }
     );
-
     observer.observe(element);
-
-    return () => {
-      observer.unobserve(element);
-    };
+    return () => observer.unobserve(element);
   }, []);
 
   return (
     <div
       ref={ref}
       className={`relative py-20 md:py-32 overflow-hidden transition-opacity duration-1000 ${visible
-        ? "animate-fade-in opacity-100 pointer-events-auto"
+        ? "animate-fade-in opacity-100"
         : "animate-fade-out opacity-0 pointer-events-none"
         }`}
     >
-      {/* Fundo decorativo */}
+      {/* Fundo blur */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#22c55e]/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/4 right-1/3 w-[200px] h-[200px] bg-[#22c55e]/10 rounded-full blur-2xl" />
-        <div className="absolute bottom-1/3 left-1/4 w-[300px] h-[300px] bg-[#22c55e]/10 rounded-full blur-2xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-green-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/3 w-[300px] h-[300px] bg-green-400/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] bg-green-400/10 rounded-full blur-2xl" />
       </div>
 
-      <div className="container relative z-10 space-y-10">
-        <div className="flex flex-col sm:flex-row justify-between gap-4">
-          <div>
-            <h1 className="text-4xl font-bold flex items-center gap-2">
-              Painel de Instalação
-            </h1>
-            <p className="text-muted-foreground max-w-xl">
-              Baixe nosso aplicativo oficial para gerenciar seu sistema com mais
-              segurança, rapidez e praticidade.
+      <div className="container relative z-10 flex flex-col items-center text-center space-y-12 max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="inline-flex items-center justify-center rounded-full bg-green-400/10 px-3 py-1 text-sm font-medium text-green-600 mb-2">
+          Aplicativos de Otimização
+        </div>
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+          Deixe seu PC <span className="text-green-600">mais rápido</span> e eficiente
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-2xl">
+          Baixe nossos aplicativos e garanta desempenho máximo, limpeza de arquivos inúteis e proteção total do sistema.
+        </p>
+
+        {/* Apps */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {/* App 1 */}
+          <div className="relative bg-white/70 rounded-2xl p-6 shadow-lg flex flex-col items-center hover:scale-105 transition-transform">
+            <Rocket className="w-10 h-10 text-green-600 mb-4" />
+            <h3 className="text-xl font-bold mb-2">Piolho Optimize X</h3>
+            <p className="text-muted-foreground text-sm mb-4 text-center">
+              Otimização completa do sistema, performance turbo e interface intuitiva.
             </p>
+            <Button
+              size="lg"
+              className="flex items-center gap-2 rounded-full px-10 bg-green-600 hover:bg-green-700 text-white transition-colors"
+              onClick={() =>
+                window.open(
+                  "https://www.mediafire.com/file/gp9921tm2bcsp3r/Piolho_OptimizeX.rar/file",
+                  "_blank"
+                )
+              }
+            >
+              <Download className="w-5 h-5" />
+              Baixar Agora
+            </Button>
+            <p className="text-sm text-muted-foreground mt-2">Senha: <strong>piolhofree</strong></p>
           </div>
+
+          {/* App 2 */}
+          <div className="relative bg-white/70 rounded-2xl p-6 shadow-lg flex flex-col items-center hover:scale-105 transition-transform">
+            <Cpu className="w-10 h-10 text-green-600 mb-4" /> {/* ícone de RAM/desempenho */}
+            <h3 className="text-xl font-bold mb-2">MemorySaver</h3>
+            <p className="text-muted-foreground text-sm mb-4 text-center">
+              Limpeza de memória RAM, mantendo tudo leve e rápido.
+            </p>
+            <Button
+              size="lg"
+              className="flex items-center gap-2 rounded-full px-10 bg-green-600 hover:bg-green-700 text-white transition-colors"
+              onClick={() =>
+                window.open(
+                  "https://www.mediafire.com/file/8oft3bxzt4nhv9e/MemorySaver.rar/file",
+                  "_blank"
+                )
+              }
+            >
+              <Download className="w-5 h-5" />
+              Baixar Agora
+            </Button>
+            <p className="text-sm text-muted-foreground mt-2">Senha: <strong>PiolhoMS</strong></p>
+          </div>
+
+
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-
-          {/* Card de download */}
-          <Card className="glass-card border-primary/20 flex flex-col justify-between">
-            <CardHeader>
-              <CardTitle className="text-2xl">Aplicativo Piolho Optimize</CardTitle>
-            </CardHeader>
-
-            <CardContent className="flex flex-col items-center justify-center flex-grow space-y-4">
-              {/* Container dos botões lado a lado */}
-              <div className="flex gap-4">
-                {/* Botão de download */}
-                <a
-                  href="https://www.mediafire.com/file/gp9921tm2bcsp3r/Piolho_OptimizeX.rar/file"
-                  download
-                  className="no-underline"
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button
-                    size="lg"
-                    className="flex items-center gap-2 rounded-full px-8 hover:scale-105 transition-transform"
-                  >
-                    <Download className="w-5 h-5" />
-                    Baixar Agora
-                  </Button>
-                </a>
-
-
-                {/* Botão ver tutorial */}
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="flex items-center gap-2 rounded-full px-8 hover:scale-105 hover:text-white hover:bg-primary transition-colors"
-                  onClick={() => {
-                    window.open("https://youtu.be/qaw7xONn4Vc", "_blank");
-                  }}
-                >
-                  Ver Tutorial
-                </Button>
-
-              </div>
-
-              {/* Senha */}
-              <p className="text-sm text-muted-foreground text-center">
-                Senha para abrir o painel: <strong>piolhofree</strong>
-              </p>
-            </CardContent>
-            {/* Versão e atualização */}
-            <div className="text-center text-sm text-muted-foreground pb-6 space-y-1">
-              <p>Versão 1.0.0 · 41,44 MB</p>
-              <p>Última atualização: Julho de 2025</p>
-            </div>
-          </Card>
-
-
-          {/* Card de recursos */}
-          <Card className="glass-card border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Recursos do Aplicativo</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Zap className="text-primary w-6 h-6" />
-                <div>
-                  <p className="font-semibold">Desempenho Rápido</p>
-                  <p className="text-muted-foreground text-sm">
-                    Otimização inteligente para garantir velocidade e estabilidade no
-                    seu sistema.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <ShieldCheck className="text-primary w-6 h-6" />
-                <div>
-                  <p className="font-semibold">Seguro & Privado</p>
-                  <p className="text-muted-foreground text-sm">
-                    Nenhum dado é enviado para a internet. Tudo é feito localmente no
-                    seu computador.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="text-primary w-6 h-6" />
-                <div>
-                  <p className="font-semibold">Interface Simples</p>
-                  <p className="text-muted-foreground text-sm">
-                    Fácil de usar, com menus claros e sem complicações.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <MonitorSmartphone className="text-primary w-6 h-6" />
-                <div>
-                  <p className="font-semibold">Modo Performance</p>
-                  <p className="text-muted-foreground text-sm">
-                    Ative o modo turbo para jogos, trabalho pesado ou renderizações.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* FAQs */}
-        <Card className="glass-card border-primary/20">
-          <CardHeader>
-            <CardTitle className="text-2xl">Dúvidas Frequentes</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <div className="flex gap-2 items-start">
-              <HelpCircle className="text-primary w-5 h-5 mt-1" />
-              <div>
-                <p className="font-semibold">Como instalar?</p>
-                <p className="text-sm text-muted-foreground">
-                  Clique em “Baixar Agora”, execute o instalador e siga as instruções.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-2 items-start">
-              <HelpCircle className="text-primary w-5 h-5 mt-1" />
-              <div>
-                <p className="font-semibold">O aplicativo é gratuito?</p>
-                <p className="text-sm text-muted-foreground">
-                  Sim! Totalmente gratuito para uso pessoal.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-2 items-start">
-              <HelpCircle className="text-primary w-5 h-5 mt-1" />
-              <div>
-                <p className="font-semibold">Precisa de internet para funcionar?</p>
-                <p className="text-sm text-muted-foreground">
-                  Não. Ele funciona totalmente offline após instalado.
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="glass-card border-primary/20">
-          <CardHeader>
-            <CardTitle className="text-2xl">O que dizem os usuários</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <blockquote className="text-sm text-muted-foreground italic border-l-4 pl-4 border-[#22c55e]">
-              “O Piolho Optimize deixou meu PC muito mais rápido, nem parece o mesmo!”
-              <div className="mt-1 font-bold">– João Silva</div>
-            </blockquote>
-            <blockquote className="text-sm text-muted-foreground italic border-l-4 pl-4 border-[#22c55e]">
-              “Interface fácil e muito eficiente! Recomendo.”
-              <div className="mt-1 font-bold">– Maria Souza</div>
-            </blockquote>
-          </CardContent>
-        </Card>
-        {/* Indicadores de Uso */}
-        <div className="flex justify-center gap-10 mt-6 text-center text-muted-foreground">
-          <div>
-            <p className="text-4xl font-bold text-[#22c55e]">500+</p>
-            <p>Instalações</p>
+        {/* Recursos */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-center">
+          <div className="p-6 bg-green-50 rounded-2xl flex flex-col items-center gap-2 hover:shadow-lg transition-shadow">
+            <Zap className="text-green-600 w-8 h-8" />
+            <h4 className="font-semibold text-lg">Performance</h4>
+            <p className="text-sm text-muted-foreground">Aumente velocidade e estabilidade do seu PC.</p>
           </div>
-          <div>
-            <p className="text-4xl font-bold text-[#22c55e]">4.8/5</p>
-            <p>Avaliação média</p>
+          <div className="p-6 bg-green-50 rounded-2xl flex flex-col items-center gap-2 hover:shadow-lg transition-shadow">
+            <ShieldCheck className="text-green-600 w-8 h-8" />
+            <h4 className="font-semibold text-lg">Segurança</h4>
+            <p className="text-sm text-muted-foreground">Proteção total sem enviar dados para a internet.</p>
           </div>
-          <div>
-            <p className="text-4xl font-bold text-[#22c55e]">100%</p>
-            <p>Usuários satisfeitos</p>
+          <div className="p-6 bg-green-50 rounded-2xl flex flex-col items-center gap-2 hover:shadow-lg transition-shadow">
+            <CheckCircle className="text-green-600 w-8 h-8" />
+            <h4 className="font-semibold text-lg">Interface</h4>
+            <p className="text-sm text-muted-foreground">Fácil, intuitivo e moderno, sem complicações.</p>
           </div>
         </div>
 
         {/* Suporte */}
-        <div className="text-center">
+        <div className="mt-12">
           <Button
             variant="outline"
             className="mx-auto flex gap-2 items-center"
-            onClick={() => window.open("https://wa.me/5533999411080", "_blank")}
+            onClick={() => window.open("https://discord.gg/45zyQEe2s3", "_blank")}
           >
             <MessageCircle className="w-5 h-5" />
-            Suporte via WhatsApp
+            Suporte via Discord
           </Button>
         </div>
+
       </div>
     </div>
   );
