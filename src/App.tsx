@@ -7,6 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
+import Discord from "./pages/Discord";
 
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +27,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/discord" element={<Discord />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="*" element={<NotFound />} />

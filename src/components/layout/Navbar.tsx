@@ -40,6 +40,17 @@ export function Navbar() {
           >
             Download
           </Link>
+
+          
+          <Link
+            to="/discord"
+            className={cn(
+              "text-sm font-medium transition-colors hover:text-[#22c55e] no-underline hover:no-underline",
+              location.pathname === "/discord" ? "text-[#22c55e]" : "text-muted-foreground"
+            )}
+          >
+            Discord
+          </Link>
         </nav>
 
       </div>
