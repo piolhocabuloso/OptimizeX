@@ -21,9 +21,8 @@ export function Dashboard() {
   return (
     <div
       ref={ref}
-      className={`relative py-16 overflow-hidden transition-opacity duration-1000 ${
-        visible ? "animate-fade-in opacity-100" : "animate-fade-out opacity-0 pointer-events-none"
-      }`}
+      className={`relative py-16 overflow-hidden transition-opacity duration-1000 ${visible ? "animate-fade-in opacity-100" : "animate-fade-out opacity-0 pointer-events-none"
+        }`}
     >
       {/* Fundo */}
       <div className="absolute inset-0 bg-gradient-to-b from-white to-green-50 z-0" />
@@ -60,7 +59,7 @@ export function Dashboard() {
               Diversos canais de texto e voz para todos os gostos. Converse, jogue e troque ideias em tempo real.
             </p>
           </div>
-          <div className="bg-green-100 rounded-2xl shadow-inner p-8 flex flex-col items-start hover:shadow-lg transition-shadow">
+          <div className="bg-green-100 rounded-2xl shadow-inner p-8 flex flex-col items-start hover:scale-105 transition-transform">
             <ShieldCheck className="w-12 h-12 text-green-700 mb-4" />
             <h2 className="text-2xl font-semibold mb-2">Ambiente Seguro</h2>
             <p className="text-gray-700">
@@ -68,6 +67,7 @@ export function Dashboard() {
             </p>
           </div>
         </section>
+
 
         {/* Recursos */}
         <section className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
