@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: 150 20% 2%;
+  --foreground: 0 0% 98%;
+  --card: 150 18% 4%;
+  --card-foreground: 0 0% 98%;
+  --popover: 150 18% 4%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 142 71% 45%;
+  --primary-foreground: 150 30% 4%;
+  --secondary: 150 14% 10%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 150 12% 12%;
+  --muted-foreground: 150 8% 64%;
+  --accent: 142 70% 45%;
+  --accent-foreground: 150 30% 4%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 150 14% 16%;
+  --input: 150 14% 16%;
+  --ring: 142 71% 45%;
+  --radius: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  background: #030504 !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  color: hsl(var(--foreground));
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::selection,
+::selection {
+  background: #34d399;
+  color: #020403;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-shell {
+    @apply relative min-h-screen overflow-hidden bg-[#030504] text-white;
+  }
+
+  .premium-card {
+    @apply rounded-[1.75rem] border border-white/10 bg-white/[0.045] shadow-2xl shadow-black/25 backdrop-blur-xl;
+  }
+
+  .green-glow {
+    box-shadow: 0 0 80px rgba(52, 211, 153, 0.12);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(.985);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes floatSoft {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: .35;
+  }
+  50% {
+    transform: translateY(-18px);
+    opacity: .85;
+  }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(52, 211, 153, 0); }
+  50% { box-shadow: 0 0 55px rgba(52, 211, 153, .22); }
+}
